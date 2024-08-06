@@ -1,6 +1,7 @@
 import { explorer } from './dummyData.js';
 import React, { useState, useId } from 'react';
 import './style.css';
+import { useDebounce } from './useDebounce.js';
 
 const FileAndFolder = ({ explorer }) => {
   const [value, setValue] = useState(explorer);
@@ -10,6 +11,10 @@ const FileAndFolder = ({ explorer }) => {
   const [folderValue, setFolderValue] = useState('');
   const [fileValue, setFileValue] = useState('');
   const date = new Date().getTime();
+
+  const debounc = useDebounce(() => {
+    console.log("search: .......")
+  },1000);
 
   const handleClick = () => {
     setExpand((prev) => !prev);
@@ -26,11 +31,13 @@ const FileAndFolder = ({ explorer }) => {
   };
 
   const handleChangeFolder = (e) => {
-    setFolderValue(e.target.value);
+    setFolderValue(e.target.value)
+    debounc( e.target.value,1000);
   };
 
   const handleChangeFile = (e) => {
-    setFileValue(e.target.value);
+ setFileValue(e.target.value);
+ debounc( e.target.value,1000);
   };
 
   const handleCreateFolder = () => {
