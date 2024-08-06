@@ -1,0 +1,24 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+.files {
+  cursor: pointer;
+  height: auto;
+  background-color: azure;
+  width: 100%;
+  margin: 10px;
+}
+
+.display {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+.margin-left {
+  margin-left: 20px;
+}
